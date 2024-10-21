@@ -1,0 +1,40 @@
+@model VerifyEmailViewModel;
+@{
+    ViewData["Title"] = "Verify Email";
+    Layout = "_AccountLayout";
+}
+
+<div class="registration-form">
+    <h2 class="text-center mb-4">Verify Email</h2>
+    <form asp-action="VerifyEmail" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control item" placeholder="Example123@gmail.com"/>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="float-end">
+            <a asp-controller="Account" asp-action="VerifyEmail" class="text-decoration-none">Forgot password?</a>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" value="Verify" class="btn btn-block create-account">Login</button>
+        </div>
+
+        <br />
+    </form>
+</div>
+
+
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

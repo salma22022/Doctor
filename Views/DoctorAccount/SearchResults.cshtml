@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Project.ViewModels.DoctorViewModel>
+
+@{
+    ViewData["Title"] = "Search Results";
+}
+
+<h2>Search Results</h2>
+
+@if (Model != null && Model.Any())
+{
+    <div class="row">
+        @foreach (var doctor in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@doctor.DoctorName</h5>
+                        <p class="card-text"><strong>Specialization:</strong> @doctor.SpecializationName</p>
+                        <p class="card-text"><strong>Clinic:</strong> @doctor.ClinicName</p>
+                        <p class="card-text"><strong>City:</strong> @doctor.ClinicCity</p>
+                        <p class="card-text"><strong>Price:</strong> @doctor.ClinicPrice</p>
+                        <p class="card-text"><strong>Insurance Accepted:</strong> @string.Join(", ", doctor.InsuranceAccepted)</p>
+                        <p class="card-text"><strong>Bio:</strong> @doctor.Bio</p>
+                        <button class="btn btn-primary"
+                                onclick="location.href='@Url.Action("BookAppointment", "Appointment", new { doctorName = doctor.DoctorName })'">
+                            Book Appointment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No doctors found for the selected criteria.</p>
+}
+
+<!-- Appointment section -->
+<div class="appointment_section" style="display:none;">
+    <div class="container">
+        <div class="appointment_box">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="appointment_taital">Book <span style="color: #0cb7d6;">Appointment</span></h1>
+                </div>
+            </div>
+            <div class="appointment_section_2">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="doctorname_text">Patient Name</p>
+                        <input type="text" class="email_text" placeholder="" name="">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="doctorname_text">Doctor's Name</p>
+                        <input type="text" class="email_text" id="doctorName" readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="doctorname_text">Department's Name</p>
+                        <select class="form-control" id="">
+                            <option>Choose Department</option>
+                            <option>Cardiology</option>
+                            <option>Neurology</option>
+                            <option>Orthopedics</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="doctorname_text">Phone Number</p>
+                        <input type="text" class="email_text" placeholder="" name="">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="doctorname_text">Department</p>
+                        <select class="form-control" id="">
+                            <option>Choose Department</option>
+                            <option>Cardiology</option>
+                            <option>Neurology</option>
+                            <option>Orthopedics</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="doctorname_text">Choose Date</p>
+                        <input id="datepicker" placeholder="Select Date" width="270" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showAppointmentSection(doctorName) {
+        // Set the doctor's name in the appointment section
+        document.getElementById("doctorName").value = doctorName;
+
+        // Show the appointment section
+        document.querySelector('.appointment_section').style.display = 'block';
+    }
+</script>

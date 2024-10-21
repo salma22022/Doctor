@@ -1,0 +1,73 @@
+﻿@model Project.ViewModels.AppointmentViewModel
+@{
+    ViewData["Title"] = "Book Appointment";
+}
+
+<!-- appointment section start -->
+<div class="appointment_section">
+    <div class="container">
+        <div class="appointment_box">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="appointment_taital">Book <span style="color: #0cb7d6;">Appointment</span></h1>
+                </div>
+            </div>
+            <div class="appointment_section_2">
+                <form asp-action="SubmitBooking" method="post">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="doctorname_text">Patient Name</p>
+                            <input type="text" class="form-control" asp-for="PatientName" placeholder="Enter your name" />
+                            <span asp-validation-for="PatientName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="doctorname_text">Doctor's Name</p>
+                            <input type="text" class="form-control" asp-for="DoctorName" readonly />
+                            <span asp-validation-for="DoctorName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="doctorname_text">Department</p>
+                            <select class="form-control" asp-for="Department">
+                                <option value="" disabled selected>Select Department</option>
+                                <option value="Cardiology">Cardiology</option>
+                                <option value="Neurology">Neurology</option>
+                                <option value="Orthopedics">Orthopedics</option>
+                            </select>
+                            <span asp-validation-for="Department" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <p class="doctorname_text">Phone Number</p>
+                            <input type="text" class="form-control" asp-for="PhoneNumber" placeholder="Enter your phone number" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="doctorname_text">Appointment Date</p>
+                            <input type="datetime-local" class="form-control" asp-for="AppointmentDate" />
+                            <span asp-validation-for="AppointmentDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary">Confirm Appointment</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- appointment section end -->
+<!-- Validation summary -->
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}

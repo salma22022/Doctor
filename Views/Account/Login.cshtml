@@ -1,0 +1,61 @@
+@model LoginViewModel;
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_AccountLayout";
+}
+
+<div class="registration-form">
+    <!-- Use the form tag helper for easier form management -->
+    <form asp-action="Login" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+
+        <!-- Use input tag helpers to bind the inputs to model properties -->
+        <div class="form-group">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control item" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password" class="form-label"></label>
+            <input asp-for="Password" class="form-control item" type="password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <div class="form-check mb-3">
+                <label class="form-check-label">
+                    <input asp-for="RememberMe" class="form-check-input">
+                    @Html.DisplayNameFor(a => a.RememberMe)
+                </label>
+            </div>
+
+            <div class="float-end">
+                <a asp-controller="Account" asp-action="VerifyEmail" class="text-decoration-none">Forgot password?</a>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" value="Login" class="btn btn-block create-account">Login</button>
+        </div>
+
+        <br />
+
+        <div class="no-account text-center">
+            <h6>Don't have an account?</h6>
+            <a asp-controller="Account" asp-action="Register" class="text-decoration-none">Register</a>
+        </div>
+    </form>
+</div>
+
+
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

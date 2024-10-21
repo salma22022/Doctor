@@ -1,0 +1,43 @@
+﻿@model Project.ViewModels.ProfileViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+        }
+
+        .profile-container {
+            max-width: 600px; /* Set a max width for the profile box */
+            margin: 50px auto; /* Center the box */
+            padding: 20px; /* Add some padding */
+            background-color: white; /* White background for the box */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        h2 {
+            text-align: center; /* Center the heading */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h2>User Profile</h2>
+        <p><strong>Name:</strong> @Model.Name</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Phone Number:</strong> @Model.PhoneNumber</p>
+        <p><strong>Birthdate:</strong> @Model.Birthdate.ToString("yyyy-MM-dd")</p> <!-- Formatting if needed -->
+        <p><strong>Gender:</strong> @Model.Gender</p>
+        <div class="edit-button">
+            <a class="btn btn-primary" asp-controller="Account" asp-action="Edit">Edit Profile</a>
+        </div>
+    </div>
+</body>
+</html>

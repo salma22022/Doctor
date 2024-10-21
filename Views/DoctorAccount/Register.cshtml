@@ -1,0 +1,132 @@
+@model DoctorRegisterViewModel
+@{
+    ViewData["Title"] = "Register as a doctor";
+    Layout = "_AccountLayout";
+}
+
+<div class="registration-form">
+    <form asp-action="Register" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-icon">
+            <span><i class="icon icon-user"></i></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control item" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control item" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="form-label"></label>
+            <input asp-for="PhoneNumber" class="form-control item" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Bio" class="form-label"></label>
+            <input asp-for="Bio" class="form-control item" />
+            <span asp-validation-for="Bio" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Gender"></label>
+            <select asp-for="Gender" class="form-control">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="LicenseNumber" class="form-label"></label>
+            <input asp-for="LicenseNumber" class="form-control item" />
+            <span asp-validation-for="LicenseNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SpecializationName">Specialization</label>
+            <select asp-for="SpecializationName" class="form-control" asp-items="Html.GetEnumSelectList<SpecializationName>()">
+                <option value="">Select Specialization</option>
+                @foreach (var specialization in Enum.GetNames(typeof(SpecializationName)))
+                {
+                    <option value="@specialization">@specialization</option>
+                }
+            </select>
+            <span asp-validation-for="SpecializationName" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="ClinicName" class="form-label"></label>
+            <input asp-for="ClinicName" class="form-control item" />
+            <span asp-validation-for="ClinicName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ClinicPrice" class="form-label"></label>
+            <input asp-for="ClinicPrice" class="form-control item" />
+            <span asp-validation-for="ClinicPrice" class="text-danger"></span>
+        </div>
+
+       
+        <div class="form-group">
+            <label asp-for="City" class="form-label"></label>
+            <input asp-for="City" class="form-control item" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Area" class="form-label"></label>
+            <input asp-for="Area" class="form-control item" />
+            <span asp-validation-for="Area" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Address" class="form-label"></label>
+            <input asp-for="Address" class="form-control item" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+       
+
+        <div class="form-group">
+            <label asp-for="Password" class="form-label"></label>
+            <input asp-for="Password" class="form-control item" type="password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ConfirmPassword" class="form-label"></label>
+            <input asp-for="ConfirmPassword" class="form-control item" type="password" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="GpsLoc" class="form-label"></label>
+            <input asp-for="GpsLoc" class="form-control item" />
+            <span asp-validation-for="GpsLoc" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" value="Register" class="btn btn-block create-account">Register</button>
+        </div>
+
+        <br/>
+
+        <div class="no-account text-center">
+            <h6>Already have an account?</h6>
+            <a asp-controller="DoctorAccount" asp-action="Login" class="text-decoration-none">Login</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

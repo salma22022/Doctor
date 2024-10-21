@@ -1,0 +1,93 @@
+﻿@model Project.ViewModels.DoctorProfileViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doctor Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light background color */
+        }
+
+        .profile-container {
+            max-width: 1250px; /* Max width for wider container */
+            margin: 50px auto; /* Center the container */
+            padding: 30px; /* Add padding inside the container */
+            background-color: white; /* White background */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2); /* Box shadow */
+        }
+
+        h2, h3 {
+            color: #2c4964; /* Header color */
+            text-align: center; /* Center align headers */
+        }
+
+        h3 {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+
+        .edit-button {
+            text-align: center; /* Center the edit button */
+            margin-top: 30px;
+        }
+
+        .details-section {
+            padding: 20px; /* Add padding inside cards */
+            margin: 15px; /* Add margin between the card and the container */
+            background-color: #ffffff; /* White background for cards */
+            border-radius: 10px; /* Rounded corners for cards */
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2); /* Box shadow for the cards */
+        }
+
+            .details-section p {
+                text-align: left; /* Align text to the left */
+            }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="row d-flex align-items-stretch">
+            <!-- Added align-items-stretch -->
+            <!-- Personal Details Section -->
+            <div class="col-md-6 mb-4">
+                <div class="details-section h-100">
+                    <!-- Added h-100 -->
+                    <h3>Personal Details</h3>
+                    <p><strong>Name:</strong> @Model.Name</p>
+                    <p><strong>Email:</strong> @Model.Email</p>
+                    <p><strong>Phone Number:</strong> @Model.PhoneNumber</p>
+                    <p><strong>Bio:</strong> @Model.Bio</p>
+                    <p><strong>Gender:</strong> @Model.Gender</p>
+                    <p><strong>License Number:</strong> @Model.LicenseNumber</p>
+                    <p><strong>Specialization:</strong> @Model.SpecializationName</p>
+                </div>
+            </div>
+
+            <!-- Clinic Details Section -->
+            <div class="col-md-6 mb-4">
+                <div class="details-section h-100">
+                    <!-- Added h-100 -->
+                    <h3>Clinic Details</h3>
+                    <p><strong>Clinic Name:</strong> @Model.ClinicName</p>
+                    <p><strong>Clinic Price:</strong> @Model.ClinicPrice</p>
+                    <p><strong>City:</strong> @Model.City</p>
+                    <p><strong>Area:</strong> @Model.Area</p>
+                    <p><strong>Address:</strong> @Model.Address</p>
+                    <p><strong>GPS Location:</strong> @Model.GpsLoc</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="edit-button">
+            <a class="btn btn-primary" asp-controller="DoctorAccount" asp-action="EditProfile">Edit Profile</a>
+        </div>
+    </div>
+</body>
+</html>
+
