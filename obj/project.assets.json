@@ -8291,11 +8291,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\,net\\graduationproject\\Project.csproj",
+      "projectUniqueName": "D:\\,net\\graduationproject2\\doctor\\Project.csproj",
       "projectName": "Project",
-      "projectPath": "D:\\,net\\graduationproject\\Project.csproj",
+      "projectPath": "D:\\,net\\graduationproject2\\doctor\\Project.csproj",
       "packagesPath": "C:\\Users\\Salma Ibrahim\\.nuget\\packages\\",
-      "outputPath": "D:\\,net\\graduationproject\\obj\\",
+      "outputPath": "D:\\,net\\graduationproject2\\doctor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
